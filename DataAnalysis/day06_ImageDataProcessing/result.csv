@@ -1,0 +1,8 @@
+model,Accuracy
+RF,0.344
+GBDT,0.356
+KNN,0.268
+DT,0.332
+GNB,0.284
+SVM,0.396
+LR,0.396
