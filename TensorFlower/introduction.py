@@ -5,7 +5,7 @@
 """
 import tensorflow as tf
 import numpy as np
-
+import pands as pd
 # 使用 Numpy生成假数据（phony data），总共100个点
 x_data = np.float32(np.random(2, 100)) #随机数
 y_data = np.dot([0.100, 0.200], x_data) + 0.300
