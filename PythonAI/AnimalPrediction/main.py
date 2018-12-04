@@ -87,8 +87,5 @@ def main():
     result_df.plot(y=['Time (s)'], kind='bar', ax=ax2, title='Time (s)', legend=False)
     plt.tight_layout()
     plt.savefig(os.path.join(config.output_path,'result.jpg'))
-
-
-
 if __name__ == '__main__':
     main()
