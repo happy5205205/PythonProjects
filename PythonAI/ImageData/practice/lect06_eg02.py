@@ -10,7 +10,7 @@ import numpy as np
 # 1. 颜色特征
 img_gray_data = cv2.imread('./images/messi.jpg', cv2.IMREAD_GRAYSCALE)
 hist, bins = np.histogram(img_gray_data.ravel(), bins=50)
-print(hist,end='\n')
+print(hist)
 print(bins)
 
 # 2. SIFT 特征
