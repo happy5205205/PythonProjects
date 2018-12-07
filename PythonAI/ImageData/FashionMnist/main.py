@@ -39,6 +39,7 @@ def main():
     feats_test = utils.extract_feats(X_test)
 
     # 特征归一化处理
+
     proc_feats_train, pro_feats_test = utils.do_feature_engineering(feats_train, feats_test)
 
     # 数据建模及验证
