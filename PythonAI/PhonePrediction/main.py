@@ -9,8 +9,8 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from PythonAI_Ⅱ.PhonePrediction import config
-from PythonAI_Ⅱ.PhonePrediction import utils
+from PythonAI.PhonePrediction import config
+from PythonAI.PhonePrediction import utils
 
 
 def main():
