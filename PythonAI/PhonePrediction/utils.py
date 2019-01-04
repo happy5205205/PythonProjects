@@ -15,7 +15,6 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 import time
 
-
 def clearn_data(dataset):
 
     """
