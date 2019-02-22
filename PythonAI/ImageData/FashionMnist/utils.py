@@ -82,8 +82,6 @@ def do_feature_engineering(feats_train, feats_test):
             :param feats_train: 训练数据特征矩阵
             :param feats_test:  测试数据特征矩阵
         :return:
-
-
     """
     std_scaler = StandardScaler()
     scaled_feats_train = std_scaler.fit_transform(feats_train.astype(np.float64))
