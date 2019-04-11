@@ -9,8 +9,8 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from PythonAI_Ⅱ.AnimalPrediction import config
-from PythonAI_Ⅱ.AnimalPrediction import utils
+from PythonAI.AnimalPrediction import config
+from PythonAI.AnimalPrediction import utils
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
