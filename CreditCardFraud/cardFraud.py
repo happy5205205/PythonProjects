@@ -6,4 +6,6 @@
     作者：张鹏
     版本：v1.0
 """
-
+import pandas as pd
+df = pd.read_csv('D:\projects\CreditCardFraud\data\creditcard.csv')
+print(df.head(3))

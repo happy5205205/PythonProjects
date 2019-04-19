@@ -99,38 +99,50 @@ def main():
     test_datafile = os.path.join(data_path, 'test.csv')
     # 加载数据文件
     train_data= pd.read_csv(train_datafile)
+    # print(train_data.head(2))
+    print('---------------------------------------------------------------------------------------------------------------')
     test_data = pd.read_csv(test_datafile)
-    # 任务1. 数据查看
-    print('\n===================== 任务1. 数据查看 =====================')
-    print('训练集有{}条记录'.format(len(train_data)))
-    print('测试集有{}条记录'.format(len(test_data)))
-    # 可视化个类别数据量统计
-    plt.figure(figsize=(12, 6))
-    ax1 = plt.subplot(1, 2, 1)
-    plt.title('训练集')
-    sns.countplot(x='Activity', data=train_data)
-    plt.xlabel('行为类别')
-    plt.xticks(rotation='vertical')
-    plt.ylabel('数量')
-    # plt.show()
-    plt.subplot(1, 2, 2, sharey=ax1)
-    plt.title('测试集')
-    sns.countplot(x='Activity', data=test_data)
-    plt.xticks(rotation = 'vertical')
-    plt.xlabel('行为类别')
-    plt.ylabel('数量')
-    # plt.show()
+    # print(test_data.head(2))
+    # # 任务1. 数据查看
+    # print('\n===================== 任务1. 数据查看 =====================')
+    # print('训练集有{}条记录'.format(len(train_data)))
+    # print('测试集有{}条记录'.format(len(test_data)))
+    # # 可视化个类别数据量统计
+    # plt.figure(figsize=(12, 6))
+    # ax1 = plt.subplot(1, 2, 1)
+    # plt.title('训练集')
+    # sns.countplot(x='Activity', data=train_data)
+    # plt.xlabel('行为类别')
+    # plt.xticks(rotation='vertical')
+    # plt.ylabel('数量')
+    # # plt.show()
+    # plt.subplot(1, 2, 2, sharey=ax1)
+    # plt.title('测试集')
+    # sns.countplot(x='Activity', data=test_data)
+    # plt.xticks(rotation = 'vertical')
+    # plt.xlabel('行为类别')
+    # plt.ylabel('数量')
+    # # plt.show()
 
     # 特征处理
+    print('---------------------------------------------------------------------------------------------------------------')
     feature_name = train_data.columns[:-2].tolist()
-    # print(feature_name)
+    print(feature_name)
+    print('---------------------------------------------------------------------------------------------------------------')
     print('共有{}个特征'.format(len(feature_name)))
     X_train = train_data[feature_name].values
+    print('---------------------------------------------------------------------------------------------------------------')
+    print(X_train.shape)
     X_test = test_data[feature_name].values
+    print('---------------------------------------------------------------------------------------------------------------')
+    print(X_test.shape)
+
 
     # 标签处理
     train_label = train_data['Activity'].values
+    print(train_label.shape)
     test_label = test_data['Activity'].values
+    print(test_label.shape)
 
     # 使用sklearn.preprocessing.LabelEncoder进行类别标签处理
     from sklearn.preprocessing import LabelEncoder
@@ -138,30 +150,30 @@ def main():
     y_train = label_enc.fit_transform(train_label)
     y_test = label_enc.transform(test_label)
 
-    print('类别标签：{}'.format(label_enc.classes_))
+    # print('类别标签：{}'.format(label_enc.classes_))
 
-    for i in range(len(label_enc.classes_)):
-        print('编码{}对应的标签为{}'.format(i, label_enc.inverse_transform(i)))
+    # for i in range(len(label_enc.classes_)):
+        # print('编码{}对应的标签为{}'.format(i, label_enc.inverse_transform(i)))
 
-     # 任务2. 数据建模及验证
-    print('\n===================== 任务2. 数据建模及验证 =====================')
-    model_name_param_dict = {'KNN':[5, 10, 15], 'LR':[0.01, 1, 100],
-                             'SVM':[100, 1000, 10000], 'DT':[50, 100, 150]}
-    result_df = pd.DataFrame(columns=['Activity', 'time'], index=list(model_name_param_dict.keys()))
-    for model_name, model_param in model_name_param_dict.items():
-        _,best_acc,duration_mean = train_model(X_train, y_train, X_test, y_test, model_name, model_param)
-
-        result_df.loc[model_name, 'Activity'] = best_acc * 100
-        result_df.loc[model_name, 'time'] = duration_mean
-    # 任务3. 模型及结果比较
-    print('\n===================== 任务3. 模型及结果比较 =====================')
-    plt.figure(figsize=(10, 4))
-    ax1 = plt.subplot(1, 2, 1)
-    result_df.plot(y=['Activity'], kind='bar', ylim=[80, 100], ax=ax1, title='准确率(%)', legend=False)
-
-    ax2 = plt.subplot(1, 2, 2)
-    result_df.plot(y=['time'], kind='bar', ax=ax2, title='训练耗时(s)', legend=False)
-    plt.savefig('./pred_results.png')
+    #  # 任务2. 数据建模及验证
+    # print('\n===================== 任务2. 数据建模及验证 =====================')
+    # model_name_param_dict = {'KNN':[5, 10, 15], 'LR':[0.01, 1, 100],
+    #                          'SVM':[100, 1000, 10000], 'DT':[50, 100, 150]}
+    # result_df = pd.DataFrame(columns=['Activity', 'time'], index=list(model_name_param_dict.keys()))
+    # for model_name, model_param in model_name_param_dict.items():
+    #     _,best_acc,duration_mean = train_model(X_train, y_train, X_test, y_test, model_name, model_param)
+    #
+    #     result_df.loc[model_name, 'Activity'] = best_acc * 100
+    #     result_df.loc[model_name, 'time'] = duration_mean
+    # # 任务3. 模型及结果比较
+    # print('\n===================== 任务3. 模型及结果比较 =====================')
+    # plt.figure(figsize=(10, 4))
+    # ax1 = plt.subplot(1, 2, 1)
+    # result_df.plot(y=['Activity'], kind='bar', ylim=[80, 100], ax=ax1, title='准确率(%)', legend=False)
+    #
+    # ax2 = plt.subplot(1, 2, 2)
+    # result_df.plot(y=['time'], kind='bar', ax=ax2, title='训练耗时(s)', legend=False)
+    # plt.savefig('./pred_results.png')
     plt.show()
 
 if __name__ == '__main__':
