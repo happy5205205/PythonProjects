@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
+# https://github.com/htbeker/Application_score_card
+
 datafile = '/Users/zhangpeng/ptyhons/GiveMeSomeCredit/data'
 data_train = pd.read_csv(os.path.join(datafile, 'cs-training.csv'))
 print(data_train)
