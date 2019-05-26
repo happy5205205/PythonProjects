@@ -71,6 +71,8 @@ def main():
     # 过滤数据，只保留包含 'g'的单品
     serving_size = menu_data[menu_data['Serving Size'].str.contains('g')].copy()
     # print(Serving_Size.head())
+
+
     def proc_size_str(size_str):
         '''
             处理Serving Size的字符串返回g
