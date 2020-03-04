@@ -50,6 +50,7 @@ class Solution:
         # res等价于pre，res.val=0，所以返回res.next
         return res.next
 
+
 if __name__ == '__main__':
     # 创建对象Solution
     sol = Solution()
