@@ -18,6 +18,8 @@
     解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
          请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
 """
+
+
 class Solution:
     def lengthOfLongestSubstring(self, s):
         """
@@ -37,16 +39,18 @@ class Solution:
         start = 0
         for i in range(len(s)):
             # 判断当前字符是否在字典中和当前字符的下标是否大于等于最近重复字符的所在位置
-            if s[i] in str_dict and str_dict[s[i]] >=start:
+            if s[i] in str_dict and str_dict[s[i]] >= start:
                 # 记录当前字符的值+1
                 start = str_dict[s[i]] + 1
             # 在此循环中，最大不重复字串的长度
-            one_max = i - start +1
+            one_max = i - start + 1
             # 把当前位置覆盖字典位置
             str_dict[s[i]] = i
             # 比较此次循环最大不重复字串长度和历史循环最大不重复字串长度
             max_len = max(max_len, one_max)
         return max_len
 
+
 sol = Solution()
-print(sol.lengthOfLongestSubstring('pwwkew'))
+res = sol.lengthOfLongestSubstring('pwwkew')
+print(res)
